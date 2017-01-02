@@ -5,7 +5,7 @@ module UsersHelper
 		when "pending"
 			link_to "Cancel Follow Request", friendship_path(current_user.friendship_relation(user)), method: :delete
 		when "requested"
-			"Accept or Deny"
+			link_to "Accept", accept_friendship_path(current_user.friendship_relation(user)), method: :put
 		when "not_friends"
 			link_to "Follow", friendships_path(user_id: user.id), method: :post
 	end

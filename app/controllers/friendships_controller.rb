@@ -1,7 +1,7 @@
 class FriendshipsController < ApplicationController
 	before_action :authenticate_user!
 	before_action :set_user, only: [:create]
-	before_action :set_friendship, only: [:destroy]
+	before_action :set_friendship, only: [:destroy, :accept]
 
 	def create
 		@friendship = current_user.request_friendship(@user)
@@ -13,8 +13,16 @@ class FriendshipsController < ApplicationController
 	def destroy
 		@friendship.destroy
 		respond_to do |format|
-			format.html {redirect_to user_path, notice: "Cancelled follow request"}
+			format.html {redirect_to :back, notice: "Success!"}
 		end
+	end
+
+	def accept
+		@friendship.accept_friendship
+		respond_to do |format|
+			format.html {redirect_to users_path, notice: "Now Following!"}
+		end
+	
 	end
 
 	private

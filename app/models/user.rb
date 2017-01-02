@@ -31,10 +31,13 @@ class User < ApplicationRecord
    	unless friendship.any?
    		return "not_friends"
    	else
-   		if friendship.first.user == self
+         if friendship.first.state == "active"
+            return "friends"
+   		elsif friendship.first.user == self
    			return "pending"
    		else
    			return "requested"
    		end
    end
+end
 end

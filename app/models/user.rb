@@ -4,6 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
    validates_presence_of :username
+   validates_presence_of :email
    validates_uniqueness_of :username
 
    has_many :friendships, dependent: :destroy
@@ -40,4 +41,9 @@ class User < ApplicationRecord
    		end
    end
 end
+
+def friendship_relation(user_2)
+   friendship = Friendship.where(user_id: [self.id, user_2.id], friend_id: [self.id, user_2.id]).first
+end
+
 end

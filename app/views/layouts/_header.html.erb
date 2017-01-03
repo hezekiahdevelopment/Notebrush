@@ -29,9 +29,9 @@
         
         <% if current_user %>
         <li><a href="#">Timeline</a></li>
-        <li><%= link_to "People", users_path %></li>
+        <li><%= link_to "Artists", users_path %></li>
         <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%= gravatar_tag current_user.email, size:20 %><%= current_user.username %> <span class="caret"></span></a>
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%= current_user.username %> <span class="caret"></span></a>
           <ul class="dropdown-menu">
             <li><%= link_to "Profile", user_path(current_user.username) %></li>
             <li><a href="#">Following</a></li>

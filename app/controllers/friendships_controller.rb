@@ -6,23 +6,22 @@ class FriendshipsController < ApplicationController
 	def create
 		@friendship = current_user.request_friendship(@user)
 		respond_to do |format|
-			format.html {redirect_to users_path, notice: "A follow request has been sent."}
+			format.html {redirect_to users_path, notice: "Friendship Created"}
 		end
 	end
 
 	def destroy
 		@friendship.destroy
 		respond_to do |format|
-			format.html {redirect_to :back, notice: "Success!"}
+			format.html {redirect_to users_path, notice: "Friendship Deleted"}
 		end
 	end
 
 	def accept
 		@friendship.accept_friendship
 		respond_to do |format|
-			format.html {redirect_to users_path, notice: "Now Following!"}
+			format.html {redirect_to users_path, notice: "Friendship Accepted"}
 		end
-	
 	end
 
 	private
@@ -34,5 +33,4 @@ class FriendshipsController < ApplicationController
 	def set_friendship
 		@friendship = Friendship.find(params[:id])
 	end
-
 end

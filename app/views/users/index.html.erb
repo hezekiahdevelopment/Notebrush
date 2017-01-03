@@ -1,18 +1,21 @@
 <div class="jumbotron text-center">
-	<h2>Artists</h2>
-	<div class="panel panel-default">
-		<div class = "panel-body">
+	<h2>Explore Artists</h2>
+	
 	<div class="btn-group" role="group" aria-label="Default Button Groups">
-		<button type="button" class="btn btn-default">Everyone</button>
-		<button type="button" class="btn btn-default">Friends</button>
-		<button type="button" class="btn btn-default">Requests</button>
-		<button type="button" class="btn btn-default">Pending</button>
+
+		<%= link_to "Everyone", users_path, class: "btn btn-default #{'active' unless params[:people ]}" %>
+		<%= link_to "Friends", users_path(people: "Friends"), class: "btn btn-default #{'active' if params[:people] == 'Friends'}" %>
+		<%= link_to "Requests", users_path(people: "Requests"), class: "btn btn-default #{'active' if params[:people] == 'Requests'}" %>
+		<%= link_to "Pending", users_path(people: "Pending"), class: "btn btn-default #{'active' if params[:people] == 'Pending'}" %>
+
 	</div>
 </div>
 </div>
 </div>
 
+
 <div class="container">
+	
 	<div class="row">
 		<%= render @users %>
 	</div>

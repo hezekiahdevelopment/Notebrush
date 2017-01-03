@@ -1,10 +1,18 @@
 class UsersController < ApplicationController
   	before_action :set_user, only: [:show]
-  	before_action :authenticate_user!
+  	before_action :authenticate_user!, only: [:index]
 
 def index
-	@users = User.all
-end
+		case params[:people] when "Friends"
+      @users = current_user.active_friends
+    when "Requests"
+      @users = current_user.pending_friend_requests_from.map(&:user)
+    when "Pending"
+      @users = current_user.pending_friend_requests_to.map(&:friend)
+    else
+      @users = User.where.not(id: current_user.id)
+    end
+	end
   
 def show
 end

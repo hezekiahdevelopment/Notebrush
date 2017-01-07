@@ -1,15 +1,14 @@
 class Post < ApplicationRecord
 	include PublicActivity::Model
 	belongs_to :user
-	validate_presence_of :user_id
-	validate_presence_of :content
+	validates_presence_of :user_id
+	validates_presence_of :content
 
-
-	auto_html_for :content
+	auto_html_for :content do
 		html_escape
 		image
-		youtube(width: "100%", height: 400, autoplay: false)
+		youtube(width: "100%", height: 250, autoplay: false)
 		link target: "_blank", rel: "nofollow"
-		
+		simple_format
 	end
 end

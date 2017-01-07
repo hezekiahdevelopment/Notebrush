@@ -4,9 +4,9 @@
 	<div class="btn-group" role="group" aria-label="Default Button Groups">
 
 		<%= link_to "Everyone", users_path, class: "btn btn-default #{'active' unless params[:people ]}" %>
-		<%= link_to "Friends", users_path(people: "Friends"), class: "btn btn-default #{'active' if params[:people] == 'Friends'}" %>
-		<%= link_to "Requests", users_path(people: "Requests"), class: "btn btn-default #{'active' if params[:people] == 'Requests'}" %>
-		<%= link_to "Pending", users_path(people: "Pending"), class: "btn btn-default #{'active' if params[:people] == 'Pending'}" %>
+		<%= link_to "Friends (#{@friend_count})", users_path(people: "Friends"), class: "btn btn-default #{'active' if params[:people] == 'Friends'}" %>
+		<%= link_to "Requests (#{request_count})", users_path(people: "Requests"), class: "btn btn-default #{'active' if params[:people] == 'Requests'}" %>
+		<%= link_to "Pending (#{@pending_count})", users_path(people: "Pending"), class: "btn btn-default #{'active' if params[:people] == 'Pending'}" %>
 
 	</div>
 </div>

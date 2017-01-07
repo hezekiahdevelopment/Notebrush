@@ -14,4 +14,19 @@ body {
 
 .jumbotron {
 	background-color: white;
+	background: rgba(256, 256, 256, 0.2);
+}
+
+.front-title {
+
+	margin-top: 100px;
+}
+
+.landing { 
+  background: image-url("bg1.jpg") no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  height: 100vh;
 }

@@ -29,12 +29,12 @@
         
         <% if current_user %>
         <li><%= link_to "Timeline", activities_path %></li>
-        <li><%= link_to "Artists", users_path %></li>
+        <li><%= link_to "Artists (#{request_count})", users_path %></li>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%= current_user.username %> <span class="caret"></span></a>
           <ul class="dropdown-menu">
             <li><%= link_to "Profile", user_path(current_user.username) %></li>
-            <li><a href="#">Following</a></li>
+            <li><%= link_to "Friends", users_path(people: "Friends") %></li>
             <li><%= link_to "Settings", edit_user_registration_path %></li>
             <li role="separator" class="divider"></li>
             <li><%= link_to "Log Out", destroy_user_session_path, method: :delete %></li>

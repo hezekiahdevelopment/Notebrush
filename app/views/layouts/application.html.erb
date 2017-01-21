@@ -10,14 +10,14 @@
 
   <body>
     <% unless request.path == new_user_registration_path || request.path == new_user_session_path %>
-  	<%= render 'layouts/header' %>
+      <%= render 'layouts/header' %>
     <% end %>
 
     <% flash.each do |type, message| %>
       <div class="alert alert-info fade-in">
         <button class="close" data-dismiss="alert">X</button>
-          <%= message %>
-        </div>
+        <%= message %>
+      </div>
     <% end %>
     <%= yield %>
   </body>

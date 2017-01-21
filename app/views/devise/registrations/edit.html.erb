@@ -3,13 +3,11 @@
 <br/>
 
 <div class="text-center">
-<%= link_to "http://www.gravatar.com", target: "_blank" do %>
-<%= gravatar_tag current_user.email, size: 100 %>
-<small>Click to change avatar</small>
-<% end %>
-
+  <%= link_to "http://www.gravatar.com", target: "_blank" do %>
+    <%= gravatar_tag current_user.email, size: 100 %>
+    <small>Click to change avatar</small>
+  <% end %>
 </div>
-
 
 <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }, html: {class: "form-signin"}) do |f| %>
   <%= f.error_notification %>
@@ -20,35 +18,32 @@
     <%= f.input :age, label: false, placeholder: "Age", input_html: {class: "form-control"} %>
     <%= f.input :gender, label: false, placeholder: "Location", input_html: {class: "form-control"} %>
     <%= f.input :bio, label: false, placeholder: "Bio", input_html: {class: "form-control"} %>
+
      <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
       <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
     <% end %>
 
     <%= f.input :password, autocomplete: "off", hint: "***Leave it blank if you don't want to change it", required: false, label: false, placeholder: "Password reset", input_html: {class: "form-control"} %>
     <%= f.input :password_confirmation, required: false, autocomplete: "off", label: false, placeholder: "Password reset confirmation", input_html: {class: "form-control"} %>
+  </div>
 
-</div>
-
-
-
-
-    <%= f.input :current_password, required: true, label: false, placeholder: "Enter current password to save updates", input_html: {class: "form-signin"} %>
- 
+  <%= f.input :current_password, required: true, label: false, placeholder: "Enter current password to save updates", input_html: {class: "form-signin"} %>
 
   <div class="form-actions text-center">
     <%= f.button :submit, "Update", {class: "btn btn-info btn-block"} %>
   </div>
 <% end %>
 
+<!-- </div>
 </div>
-</div>
-</div>
+</div> -->
 
 <hr/>
 
 <div class="text-center">
   <h3>Unhappy with Notebrush?</h3>
-  <p><%= link_to "Cancel account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
-
-<%= link_to "Back", :back %>
- </div>
+  <p>
+    <%= link_to "Cancel account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %>
+  </p>
+  <%= link_to "Back", :back %>
+</div>

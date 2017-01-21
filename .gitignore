@@ -4,8 +4,9 @@
 # or operating system, you probably want to add a global ignore instead:
 #   git config --global core.excludesfile '~/.gitignore_global'
 
-# Ignore bundler config.
+## Environment normalisation:
 /.bundle
+/vendor/bundle
 
 # Ignore the default SQLite database.
 /db/*.sqlite3
@@ -16,6 +17,21 @@
 /tmp/*
 !/log/.keep
 !/tmp/.keep
+/coverage/
 
 # Ignore Byebug command history file.
 .byebug_history
+
+# unless supporting rvm < 1.11.0 or doing something fancy, ignore this:
+.rvmrc
+
+# if using bower-rails ignore default bower_components path bower.json files
+/vendor/assets/bower_components
+*.bowerrc
+bower.json
+# Ignore pow environment settings
+.powenv
+
+# Mac .DS_Store files
+*.DS_Store
+.DS_Store

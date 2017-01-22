@@ -4,12 +4,15 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
- validates_presence_of :username
-  validates_uniqueness_of :username
+  validates :username, presence: true, uniqueness: true
+  validates :email, presence: true, uniqueness: true,
+            format: {
+              with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+            }
 
-  has_many :friendships, dependent: :destroy
   has_many :inverse_friendships, class_name: "Friendship", foreign_key: "friend_id", dependent: :destroy
-  has_many :posts, dependent: :destroy
+  has_many :posts,       dependent: :destroy
+  has_many :friendships, dependent: :destroy
 
   def request_friendship(user_2)
    self.friendships.create(friend: user_2)
@@ -47,4 +50,5 @@ class User < ApplicationRecord
   def friendship_relation(user_2)
     Friendship.where(user_id: [self.id,user_2.id], friend_id: [self.id,user_2.id]).first
   end
+
 end

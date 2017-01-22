@@ -16,7 +16,6 @@ user1 = User.new(
   password: "1h1h1h1H",
   password_confirmation: "1h1h1h1H"
 )
-user1.skip_confirmation!
 user1.save!
 
 user2 = User.new(
@@ -25,7 +24,6 @@ user2 = User.new(
   password: "1h1h1h1H",
   password_confirmation: "1h1h1h1H"
 )
-user2.skip_confirmation!
 user2.save!
 
 user3 = User.new(
@@ -34,7 +32,6 @@ user3 = User.new(
   password: "1h1h1h1H",
   password_confirmation: "1h1h1h1H"
 )
-user3.skip_confirmation!
 user3.save!
 
 user4 = User.new(
@@ -43,7 +40,6 @@ user4 = User.new(
   password: "1h1h1h1H",
   password_confirmation: "1h1h1h1H"
 )
-user4.skip_confirmation!
 user4.save!
 
 user5 = User.new(
@@ -52,7 +48,6 @@ user5 = User.new(
   password: "1h1h1h1H",
   password_confirmation: "1h1h1h1H"
 )
-user5.skip_confirmation!
 user5.save!
 
 user6 = User.new(
@@ -61,7 +56,6 @@ user6 = User.new(
   password: "1h1h1h1H",
   password_confirmation: "1h1h1h1H"
 )
-user6.skip_confirmation!
 user6.save!
 
 # puts 'Generate Friendly id slug for users'

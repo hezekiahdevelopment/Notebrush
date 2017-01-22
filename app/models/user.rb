@@ -5,6 +5,10 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
 
   validates :username, presence: true, uniqueness: true
+  validates :email, presence: true, uniqueness: true,
+            format: {
+              with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+            }
 
   has_many :inverse_friendships, class_name: "Friendship", foreign_key: "friend_id", dependent: :destroy
   has_many :posts,       dependent: :destroy

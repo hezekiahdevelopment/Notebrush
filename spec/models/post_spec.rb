@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe User, type: :model do
+RSpec.describe Post, type: :model do
   let(:_post) { create(:post) }
 
   it { should belong_to(:user) }

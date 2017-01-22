@@ -26,13 +26,6 @@ RSpec.describe PostsController, type: :controller do
     sign_in user
   end
 
-  describe "GET #show" do
-    it "assigns the requested post as @post" do
-      get :show, params: {id: _post.to_param}
-      expect(assigns(:post)).to eq(_post)
-    end
-  end
-
   describe "GET #edit" do
     it "assigns the requested post as @post" do
       get :edit, params: {id: _post.to_param}
@@ -52,11 +45,12 @@ RSpec.describe PostsController, type: :controller do
         post :create, params: {post: valid_attributes}
         expect(assigns(:post)).to be_a(Post)
         expect(assigns(:post)).to be_persisted
+        expect(assigns(:post).activities).to_not be_empty
       end
 
       it "redirects to the created post" do
         post :create, params: {post: valid_attributes}
-        expect(response).to redirect_to(root_path)
+        expect(response).to redirect_to(user_path(_post.user.username))
       end
     end
 
@@ -68,7 +62,7 @@ RSpec.describe PostsController, type: :controller do
 
       it "re-renders the 'new' template" do
         post :create, params: {post: invalid_attributes}
-        expect(response).to redirect_to(root_path)
+        expect(response).to redirect_to(user_path(_post.user.username))
       end
     end
   end
@@ -86,7 +80,7 @@ RSpec.describe PostsController, type: :controller do
 
     it "redirects to the post list" do
       delete :destroy, params: {id: @post.to_param}
-      expect(response).to redirect_to(root_path)
+      expect(response).to redirect_to(user_path(@post.user.username))
     end
   end
 

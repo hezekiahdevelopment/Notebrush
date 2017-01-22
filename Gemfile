@@ -21,8 +21,9 @@ gem 'devise'
 
 gem 'twitter-bootstrap-rails'#, git: 'git://github.com/seyhunak/twitter-bootstrap-rails.git'
 
-# Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-# gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+group :production do
+  gem 'rails_12factor'
+end
 
 group :development, :test do
   gem 'better_errors',     '~> 2.1.1'
@@ -50,3 +51,7 @@ group :test do
   gem 'rspec-activemodel-mocks',  '~> 1.0', '>= 1.0.3'
   gem 'faker',                    '~> 1.6', '>= 1.6.6'
 end
+
+# Windows does not include zoneinfo files, so bundle the tzinfo-data gem
+# gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+#
